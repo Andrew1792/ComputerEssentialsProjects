@@ -17,7 +17,7 @@ def random_meme():
 def send_email_with_attachment(to_address, subject, body, attachment):
     # Set up the email content
     msg = MIMEMultipart()
-    msg['From'] = 'DiscardedDev@gmail.com'
+    msg['From'] = from_address
     msg['To'] = to_address
     msg['Subject'] = subject
 
@@ -35,8 +35,8 @@ def send_email_with_attachment(to_address, subject, body, attachment):
     # Set up the SMTP server
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = 'FROM ADDRESS'
-    smtp_password = 'PASSWORD'
+    smtp_username = from_address
+    smtp_password = app_password
 
     # Start the SMTP session
     server = smtplib.SMTP(smtp_server, smtp_port)
@@ -49,6 +49,8 @@ def send_email_with_attachment(to_address, subject, body, attachment):
     # Quit the SMTP session
     server.quit()
 
+from_address = 'FROM ADDRESS'
+app_password = 'APP PASSWORD'
 to_address = 'TO ADDRESS'
 subject = 'Memes go brrrrrr'
 body = 'This is a meme.'
