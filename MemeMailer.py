@@ -14,7 +14,7 @@ def random_meme():
 
     return requests.get(json_data["preview"][-1]).content
 
-def send_email_with_attachment(to_address, subject, body, attachment):
+def send_email_with_attachment(from_address, app_passoword, to_address, subject, body, attachment):
     # Set up the email content
     msg = MIMEMultipart()
     msg['From'] = from_address
@@ -56,6 +56,6 @@ subject = 'Memes go brrrrrr'
 body = 'This is a meme.'
 
 while True:
-    send_email_with_attachment(to_address, subject, body, random_meme())
+    send_email_with_attachment(from_address, app_passoword, to_address, subject, body, random_meme())
     print(f"email sent to {to_address}")
     time.sleep(300)
