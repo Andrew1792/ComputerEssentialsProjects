@@ -32,11 +32,15 @@ def send_email_with_attachment(from_address, app_passoword, to_address, subject,
     part.add_header('Content-Disposition', "attachment; filename=photo.jpg")  # Change the filename as needed
     msg.attach(part)
 
-    # Set up the SMTP server
-    smtp_server = 'smtp.gmail.com'
-    smtp_port = 587
-    smtp_username = from_address
-    smtp_password = app_password
+    try:
+        # Set up the SMTP server
+        smtp_server = 'smtp.gmail.com'
+        smtp_port = 587
+        smtp_username = from_address
+        smtp_password = app_password
+    except:
+        print("login failed")
+        return
 
     # Start the SMTP session
     server = smtplib.SMTP(smtp_server, smtp_port)
